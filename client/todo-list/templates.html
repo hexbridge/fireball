@@ -1,0 +1,23 @@
+<template name="todoList">
+  <ul>
+    {{#each todos}}
+      {{> todoItem}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="todoItem">
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+    <span class="text">{{text}}</span>
+  </li>
+</template>
+
+<template name="todoForm">
+  <form class="new-todo">
+    <input type="text" name="text" placeholder="Type to add new todos" />
+  </form>
+</template>

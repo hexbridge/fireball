@@ -18,6 +18,16 @@ This is an opinionated way of writing Meteor applications. Soon, I will try to e
 /routes - route files
 ```
 
+Why this structure? Well, all of them have 6 letters! Just kidding.
+
+First, in the `/client` folder you can put all your frontend code and it helps you reason about your UI much better spiting everything in components. Each component has its own folder and includes `templates.html` (the html), `events.js` (onClick, etc), `helpers.js` (provides logic to the templates), `subscriptions.js` (gets data from the server).
+
+Second, in the `/domain` folder there is the data layer which needs to be separated from the UI. You can think about it like an API. Each major entity has its own folder. You have `collection.js` (the model) and you can also specify the schema if you want. Also, there are `publications.js` and `methods.js`. When you think of methods you think of API POST endpoints or RPC calls. When you think of publications you can think of API GET endpoints. While this analogy is not perfect, it can help you if you're a beginner in Meteor.
+
+Third, in the `/server` folder you can have server related stuff. For example, I use to place db seed methods in this folder.
+
+Also, there is the `/styles` which can be used to build the CSS for your UI. It may fell redundant since you already have `styles.css` in each component but this is different. Here you can have more generic components (eg. buttons, tabs, etc). In the `/client` folder you should put only the CSS that is specific for that component. Here you can put the CSS for the elements that you intend to reuse.
+
 ---
 
 ### Detailed File Structure
@@ -26,7 +36,7 @@ This is an opinionated way of writing Meteor applications. Soon, I will try to e
 /server                # startup, seeds
 
 /client                # views, interactions
--- /tasks
+-- /todo-list
 ---- templates.html
 ---- helpers.js
 ---- events.js
